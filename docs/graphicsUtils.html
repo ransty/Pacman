@@ -1,0 +1,2210 @@
+<!doctype html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+
+    <title>graphicsUtils API documentation</title>
+    <meta name="description" content="" />
+
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300' rel='stylesheet' type='text/css'>
+  
+  <style type="text/css">
+  
+* {
+  box-sizing: border-box;
+}
+/*! normalize.css v1.1.1 | MIT License | git.io/normalize */
+
+/* ==========================================================================
+   HTML5 display definitions
+   ========================================================================== */
+
+/**
+ * Correct `block` display not defined in IE 6/7/8/9 and Firefox 3.
+ */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+    display: block;
+}
+
+/**
+ * Correct `inline-block` display not defined in IE 6/7/8/9 and Firefox 3.
+ */
+
+audio,
+canvas,
+video {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+
+audio:not([controls]) {
+    display: none;
+    height: 0;
+}
+
+/**
+ * Address styling not present in IE 7/8/9, Firefox 3, and Safari 4.
+ * Known issue: no IE 6 support.
+ */
+
+[hidden] {
+    display: none;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+/**
+ * 1. Prevent system color scheme's background color being used in Firefox, IE,
+ *    and Opera.
+ * 2. Prevent system color scheme's text color being used in Firefox, IE, and
+ *    Opera.
+ * 3. Correct text resizing oddly in IE 6/7 when body `font-size` is set using
+ *    `em` units.
+ * 4. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+
+html {
+    background: #fff; /* 1 */
+    color: #000; /* 2 */
+    font-size: 100%; /* 3 */
+    -webkit-text-size-adjust: 100%; /* 4 */
+    -ms-text-size-adjust: 100%; /* 4 */
+}
+
+/**
+ * Address `font-family` inconsistency between `textarea` and other form
+ * elements.
+ */
+
+html,
+button,
+input,
+select,
+textarea {
+    font-family: sans-serif;
+}
+
+/**
+ * Address margins handled incorrectly in IE 6/7.
+ */
+
+body {
+    margin: 0;
+}
+
+/* ==========================================================================
+   Links
+   ========================================================================== */
+
+/**
+ * Address `outline` inconsistency between Chrome and other browsers.
+ */
+
+a:focus {
+    outline: thin dotted;
+}
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+
+a:active,
+a:hover {
+    outline: 0;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+/**
+ * Address font sizes and margins set differently in IE 6/7.
+ * Address font sizes within `section` and `article` in Firefox 4+, Safari 5,
+ * and Chrome.
+ */
+
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin: 0.83em 0;
+}
+
+h3 {
+    font-size: 1.17em;
+    margin: 1em 0;
+}
+
+h4 {
+    font-size: 1em;
+    margin: 1.33em 0;
+}
+
+h5 {
+    font-size: 0.83em;
+    margin: 1.67em 0;
+}
+
+h6 {
+    font-size: 0.67em;
+    margin: 2.33em 0;
+}
+
+/**
+ * Address styling not present in IE 7/8/9, Safari 5, and Chrome.
+ */
+
+abbr[title] {
+    border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 3+, Safari 4/5, and Chrome.
+ */
+
+b,
+strong {
+    font-weight: bold;
+}
+
+blockquote {
+    margin: 1em 40px;
+}
+
+/**
+ * Address styling not present in Safari 5 and Chrome.
+ */
+
+dfn {
+    font-style: italic;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ * Known issue: no IE 6/7 normalization.
+ */
+
+hr {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0;
+}
+
+/**
+ * Address styling not present in IE 6/7/8/9.
+ */
+
+mark {
+    background: #ff0;
+    color: #000;
+}
+
+/**
+ * Address margins set differently in IE 6/7.
+ */
+
+p,
+pre {
+    margin: 1em 0;
+}
+
+/**
+ * Correct font family set oddly in IE 6, Safari 4/5, and Chrome.
+ */
+
+code,
+kbd,
+pre,
+samp {
+    font-family: monospace, serif;
+    _font-family: 'courier new', monospace;
+    font-size: 1em;
+}
+
+/**
+ * Improve readability of pre-formatted text in all browsers.
+ */
+
+pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/**
+ * Address CSS quotes not supported in IE 6/7.
+ */
+
+q {
+    quotes: none;
+}
+
+/**
+ * Address `quotes` property not supported in Safari 4.
+ */
+
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+
+small {
+    font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -0.5em;
+}
+
+sub {
+    bottom: -0.25em;
+}
+
+/* ==========================================================================
+   Lists
+   ========================================================================== */
+
+/**
+ * Address margins set differently in IE 6/7.
+ */
+
+dl,
+menu,
+ol,
+ul {
+    margin: 1em 0;
+}
+
+dd {
+    margin: 0 0 0 40px;
+}
+
+/**
+ * Address paddings set differently in IE 6/7.
+ */
+
+menu,
+ol,
+ul {
+    padding: 0 0 0 40px;
+}
+
+/**
+ * Correct list images handled incorrectly in IE 7.
+ */
+
+nav ul,
+nav ol {
+    list-style: none;
+    list-style-image: none;
+}
+
+/* ==========================================================================
+   Embedded content
+   ========================================================================== */
+
+/**
+ * 1. Remove border when inside `a` element in IE 6/7/8/9 and Firefox 3.
+ * 2. Improve image quality when scaled in IE 7.
+ */
+
+img {
+    border: 0; /* 1 */
+    -ms-interpolation-mode: bicubic; /* 2 */
+}
+
+/**
+ * Correct overflow displayed oddly in IE 9.
+ */
+
+svg:not(:root) {
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   Figures
+   ========================================================================== */
+
+/**
+ * Address margin not present in IE 6/7/8/9, Safari 5, and Opera 11.
+ */
+
+figure {
+    margin: 0;
+}
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+
+/**
+ * Correct margin displayed oddly in IE 6/7.
+ */
+
+form {
+    margin: 0;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+
+fieldset {
+    border: 1px solid #c0c0c0;
+    margin: 0 2px;
+    padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct color not being inherited in IE 6/7/8/9.
+ * 2. Correct text not wrapping in Firefox 3.
+ * 3. Correct alignment displayed oddly in IE 6/7.
+ */
+
+legend {
+    border: 0; /* 1 */
+    padding: 0;
+    white-space: normal; /* 2 */
+    *margin-left: -7px; /* 3 */
+}
+
+/**
+ * 1. Correct font size not being inherited in all browsers.
+ * 2. Address margins set differently in IE 6/7, Firefox 3+, Safari 5,
+ *    and Chrome.
+ * 3. Improve appearance and consistency in all browsers.
+ */
+
+button,
+input,
+select,
+textarea {
+    font-size: 100%; /* 1 */
+    margin: 0; /* 2 */
+    vertical-align: baseline; /* 3 */
+    *vertical-align: middle; /* 3 */
+}
+
+/**
+ * Address Firefox 3+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+
+button,
+input {
+    line-height: normal;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Chrome, Safari 5+, and IE 6+.
+ * Correct `select` style inheritance in Firefox 4+ and Opera.
+ */
+
+button,
+select {
+    text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ * 4. Remove inner spacing in IE 7 without affecting normal text inputs.
+ *    Known issue: inner spacing remains in IE 6.
+ */
+
+button,
+html input[type="button"], /* 1 */
+input[type="reset"],
+input[type="submit"] {
+    -webkit-appearance: button; /* 2 */
+    cursor: pointer; /* 3 */
+    *overflow: visible;  /* 4 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+
+button[disabled],
+html input[disabled] {
+    cursor: default;
+}
+
+/**
+ * 1. Address box sizing set to content-box in IE 8/9.
+ * 2. Remove excess padding in IE 8/9.
+ * 3. Remove excess padding in IE 7.
+ *    Known issue: excess padding remains in IE 6.
+ */
+
+input[type="checkbox"],
+input[type="radio"] {
+    box-sizing: border-box; /* 1 */
+    padding: 0; /* 2 */
+    *height: 13px; /* 3 */
+    *width: 13px; /* 3 */
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
+ *    (include `-moz` to future-proof).
+ */
+
+input[type="search"] {
+    -webkit-appearance: textfield; /* 1 */
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box; /* 2 */
+    box-sizing: content-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari 5 and Chrome
+ * on OS X.
+ */
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+    -webkit-appearance: none;
+}
+
+/**
+ * Remove inner padding and border in Firefox 3+.
+ */
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+/**
+ * 1. Remove default vertical scrollbar in IE 6/7/8/9.
+ * 2. Improve readability and alignment in all browsers.
+ */
+
+textarea {
+    overflow: auto; /* 1 */
+    vertical-align: top; /* 2 */
+}
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+
+/**
+ * Remove most spacing between table cells.
+ */
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+  </style>
+
+  <style type="text/css">
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+  }
+  body {
+    background: #fff;
+    font-family: "Source Sans Pro", "Helvetica Neueue", Helvetica, sans;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.6em;
+  }
+  #content {
+    width: 70%;
+    max-width: 850px;
+    float: left;
+    padding: 30px 60px;
+    border-left: 1px solid #ddd;
+  }
+  #sidebar {
+    width: 25%;
+    float: left;
+    padding: 30px;
+    overflow: hidden;
+  }
+  #nav {
+    font-size: 130%;
+    margin: 0 0 15px 0;
+  }
+
+  #top {
+    display: block;
+    position: fixed;
+    bottom: 5px;
+    left: 5px;
+    font-size: .85em;
+    text-transform: uppercase;
+  }
+
+  #footer {
+    font-size: .75em;
+    padding: 5px 30px;
+    border-top: 1px solid #ddd;
+    text-align: right;
+  }
+    #footer p {
+      margin: 0 0 0 30px;
+      display: inline-block;
+    }
+
+  h1, h2, h3, h4, h5 {
+    font-weight: 300;
+  }
+  h1 {
+    font-size: 2.5em;
+    line-height: 1.1em;
+    margin: 0 0 .50em 0;
+  }
+
+  h2 {
+    font-size: 1.75em;
+    margin: 1em 0 .50em 0;
+  }
+
+  h3 {
+    margin: 25px 0 10px 0;
+  }
+
+  h4 {
+    margin: 0;
+    font-size: 105%;
+  }
+
+  a {
+    color: #058;
+    text-decoration: none;
+    transition: color .3s ease-in-out;
+  }
+
+  a:hover {
+    color: #e08524;
+    transition: color .3s ease-in-out;
+  }
+
+  pre, code, .mono, .name {
+    font-family: "Ubuntu Mono", "Cousine", "DejaVu Sans Mono", monospace;
+  }
+
+  .title .name {
+    font-weight: bold;
+  }
+  .section-title {
+    margin-top: 2em;
+  }
+  .ident {
+    color: #900;
+  }
+
+  code {
+    background: #f9f9f9;
+  } 
+
+  pre {
+    background: #fefefe;
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 0 #f3f3f3;
+    margin: 0 30px;
+    padding: 15px 30px;
+  }
+
+  .codehilite {
+    margin: 0 30px 10px 30px;
+  }
+
+    .codehilite pre {
+      margin: 0;
+    }
+    .codehilite .err { background: #ff3300; color: #fff !important; } 
+
+  table#module-list {
+    font-size: 110%;
+  }
+
+    table#module-list tr td:first-child {
+      padding-right: 10px;
+      white-space: nowrap;
+    }
+
+    table#module-list td {
+      vertical-align: top;
+      padding-bottom: 8px;
+    }
+
+      table#module-list td p {
+        margin: 0 0 7px 0;
+      }
+
+  .def {
+    display: table;
+  }
+
+    .def p {
+      display: table-cell;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .def p:first-child {
+      white-space: nowrap;
+    }
+
+    .def p:last-child {
+      width: 100%;
+    }
+
+
+  #index {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+    ul#index .class_name {
+      /* font-size: 110%; */
+      font-weight: bold;
+    }
+    #index ul {
+      margin: 0;
+    }
+
+  .item {
+    margin: 0 0 15px 0;
+  }
+
+    .item .class {
+      margin: 0 0 25px 30px;
+    }
+
+      .item .class ul.class_list {
+        margin: 0 0 20px 0;
+      }
+
+    .item .name {
+      background: #fafafa;
+      margin: 0;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 3px;
+      display: inline-block;
+      min-width: 40%;
+    }
+      .item .name:hover {
+        background: #f6f6f6;
+      }
+
+    .item .empty_desc {
+      margin: 0 0 5px 0;
+      padding: 0;
+    }
+
+    .item .inheritance {
+      margin: 3px 0 0 30px;
+    }
+
+    .item .inherited {
+      color: #666;
+    }
+
+    .item .desc {
+      padding: 0 8px;
+      margin: 0;
+    }
+
+      .item .desc p {
+        margin: 0 0 10px 0;
+      }
+
+    .source_cont {
+      margin: 0;
+      padding: 0;
+    }
+
+    .source_link a {
+      background: #ffc300;
+      font-weight: 400;
+      font-size: .75em;
+      text-transform: uppercase;
+      color: #fff;
+      text-shadow: 1px 1px 0 #f4b700;
+      
+      padding: 3px 8px;
+      border-radius: 2px;
+      transition: background .3s ease-in-out;
+    }
+      .source_link a:hover {
+        background: #FF7200;
+        text-shadow: none;
+        transition: background .3s ease-in-out;
+      }
+
+    .source {
+      display: none;
+      max-height: 600px;
+      overflow-y: scroll;
+      margin-bottom: 15px;
+    }
+
+      .source .codehilite {
+        margin: 0;
+      }
+
+  .desc h1, .desc h2, .desc h3 {
+    font-size: 100% !important;
+  }
+  .clear {
+    clear: both;
+  }
+
+  @media all and (max-width: 950px) {
+    #sidebar {
+      width: 35%;
+    }
+    #content {
+      width: 65%;
+    }
+  }
+  @media all and (max-width: 650px) {
+    #top {
+      display: none;
+    }
+    #sidebar {
+      float: none;
+      width: auto;
+    }
+    #content {
+      float: none;
+      width: auto;
+      padding: 30px;
+    }
+
+    #index ul {
+      padding: 0;
+      margin-bottom: 15px;
+    }
+    #index ul li {
+      display: inline-block;
+      margin-right: 30px;
+    }
+    #footer {
+      text-align: left;
+    }
+    #footer p {
+      display: block;
+      margin: inherit;
+    }
+  }
+
+  /*****************************/
+
+  </style>
+
+  <style type="text/css">
+  .codehilite .hll { background-color: #ffffcc }
+.codehilite  { background: #f8f8f8; }
+.codehilite .c { color: #408080; font-style: italic } /* Comment */
+.codehilite .err { border: 1px solid #FF0000 } /* Error */
+.codehilite .k { color: #008000; font-weight: bold } /* Keyword */
+.codehilite .o { color: #666666 } /* Operator */
+.codehilite .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.codehilite .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.codehilite .cp { color: #BC7A00 } /* Comment.Preproc */
+.codehilite .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.codehilite .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.codehilite .cs { color: #408080; font-style: italic } /* Comment.Special */
+.codehilite .gd { color: #A00000 } /* Generic.Deleted */
+.codehilite .ge { font-style: italic } /* Generic.Emph */
+.codehilite .gr { color: #FF0000 } /* Generic.Error */
+.codehilite .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.codehilite .gi { color: #00A000 } /* Generic.Inserted */
+.codehilite .go { color: #888888 } /* Generic.Output */
+.codehilite .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.codehilite .gs { font-weight: bold } /* Generic.Strong */
+.codehilite .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.codehilite .gt { color: #0044DD } /* Generic.Traceback */
+.codehilite .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.codehilite .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.codehilite .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.codehilite .kp { color: #008000 } /* Keyword.Pseudo */
+.codehilite .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.codehilite .kt { color: #B00040 } /* Keyword.Type */
+.codehilite .m { color: #666666 } /* Literal.Number */
+.codehilite .s { color: #BA2121 } /* Literal.String */
+.codehilite .na { color: #7D9029 } /* Name.Attribute */
+.codehilite .nb { color: #008000 } /* Name.Builtin */
+.codehilite .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.codehilite .no { color: #880000 } /* Name.Constant */
+.codehilite .nd { color: #AA22FF } /* Name.Decorator */
+.codehilite .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.codehilite .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.codehilite .nf { color: #0000FF } /* Name.Function */
+.codehilite .nl { color: #A0A000 } /* Name.Label */
+.codehilite .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.codehilite .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.codehilite .nv { color: #19177C } /* Name.Variable */
+.codehilite .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.codehilite .w { color: #bbbbbb } /* Text.Whitespace */
+.codehilite .mb { color: #666666 } /* Literal.Number.Bin */
+.codehilite .mf { color: #666666 } /* Literal.Number.Float */
+.codehilite .mh { color: #666666 } /* Literal.Number.Hex */
+.codehilite .mi { color: #666666 } /* Literal.Number.Integer */
+.codehilite .mo { color: #666666 } /* Literal.Number.Oct */
+.codehilite .sa { color: #BA2121 } /* Literal.String.Affix */
+.codehilite .sb { color: #BA2121 } /* Literal.String.Backtick */
+.codehilite .sc { color: #BA2121 } /* Literal.String.Char */
+.codehilite .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.codehilite .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.codehilite .s2 { color: #BA2121 } /* Literal.String.Double */
+.codehilite .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.codehilite .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.codehilite .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.codehilite .sx { color: #008000 } /* Literal.String.Other */
+.codehilite .sr { color: #BB6688 } /* Literal.String.Regex */
+.codehilite .s1 { color: #BA2121 } /* Literal.String.Single */
+.codehilite .ss { color: #19177C } /* Literal.String.Symbol */
+.codehilite .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.codehilite .fm { color: #0000FF } /* Name.Function.Magic */
+.codehilite .vc { color: #19177C } /* Name.Variable.Class */
+.codehilite .vg { color: #19177C } /* Name.Variable.Global */
+.codehilite .vi { color: #19177C } /* Name.Variable.Instance */
+.codehilite .vm { color: #19177C } /* Name.Variable.Magic */
+.codehilite .il { color: #666666 } /* Literal.Number.Integer.Long */
+  </style>
+
+  <style type="text/css">
+  
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+    /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
+       (min-resolution: 120dpi) {
+    /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+
+@media print {
+    * {
+        background: transparent !important;
+        color: #000 !important; /* Black prints faster: h5bp.com/s */
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    /*
+     * Don't show links for images, or javascript/internal links
+     */
+
+    .ir a:after,
+    a[href^="javascript:"]:after,
+    a[href^="#"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group; /* h5bp.com/t */
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    @page {
+        margin: 0.5cm;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}
+
+  </style>
+
+  <script type="text/javascript">
+  function toggle(id, $link) {
+    $node = document.getElementById(id);
+    if (!$node)
+    return;
+    if (!$node.style.display || $node.style.display == 'none') {
+    $node.style.display = 'block';
+    $link.innerHTML = 'Hide source &nequiv;';
+    } else {
+    $node.style.display = 'none';
+    $link.innerHTML = 'Show source &equiv;';
+    }
+  }
+  </script>
+</head>
+<body>
+<a href="#" id="top">Top</a>
+
+<div id="container">
+    
+  
+  <div id="sidebar">
+    <h1>Index</h1>
+    <ul id="index">
+    <li class="set"><h3><a href="#header-variables">Module variables</a></h3>
+      
+  <ul>
+    <li class="mono"><a href="#graphicsUtils.ghost_shape">ghost_shape</a></li>
+  </ul>
+
+    </li>
+
+    <li class="set"><h3><a href="#header-functions">Functions</a></h3>
+      
+  <ul>
+    <li class="mono"><a href="#graphicsUtils.begin_graphics">begin_graphics</a></li>
+    <li class="mono"><a href="#graphicsUtils.changeColor">changeColor</a></li>
+    <li class="mono"><a href="#graphicsUtils.changeText">changeText</a></li>
+    <li class="mono"><a href="#graphicsUtils.circle">circle</a></li>
+    <li class="mono"><a href="#graphicsUtils.clear_screen">clear_screen</a></li>
+    <li class="mono"><a href="#graphicsUtils.colorToVector">colorToVector</a></li>
+    <li class="mono"><a href="#graphicsUtils.draw_background">draw_background</a></li>
+    <li class="mono"><a href="#graphicsUtils.edit">edit</a></li>
+    <li class="mono"><a href="#graphicsUtils.end_graphics">end_graphics</a></li>
+    <li class="mono"><a href="#graphicsUtils.formatColor">formatColor</a></li>
+    <li class="mono"><a href="#graphicsUtils.image">image</a></li>
+    <li class="mono"><a href="#graphicsUtils.keys_pressed">keys_pressed</a></li>
+    <li class="mono"><a href="#graphicsUtils.keys_waiting">keys_waiting</a></li>
+    <li class="mono"><a href="#graphicsUtils.line">line</a></li>
+    <li class="mono"><a href="#graphicsUtils.moveCircle">moveCircle</a></li>
+    <li class="mono"><a href="#graphicsUtils.move_by">move_by</a></li>
+    <li class="mono"><a href="#graphicsUtils.move_to">move_to</a></li>
+    <li class="mono"><a href="#graphicsUtils.polygon">polygon</a></li>
+    <li class="mono"><a href="#graphicsUtils.refresh">refresh</a></li>
+    <li class="mono"><a href="#graphicsUtils.remove_from_screen">remove_from_screen</a></li>
+    <li class="mono"><a href="#graphicsUtils.sleep">sleep</a></li>
+    <li class="mono"><a href="#graphicsUtils.square">square</a></li>
+    <li class="mono"><a href="#graphicsUtils.text">text</a></li>
+    <li class="mono"><a href="#graphicsUtils.wait_for_click">wait_for_click</a></li>
+    <li class="mono"><a href="#graphicsUtils.wait_for_keys">wait_for_keys</a></li>
+  </ul>
+
+    </li>
+
+
+    </ul>
+  </div>
+
+    <article id="content">
+      
+  
+
+  
+
+
+  <header id="section-intro">
+  <h1 class="title"><span class="name">graphicsUtils</span> module</h1>
+  
+  
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-graphicsUtils', this);">Show source &equiv;</a></p>
+  <div id="source-graphicsUtils" class="source">
+    <div class="codehilite"><pre><span></span><span class="c1"># graphicsUtils.py</span>
+<span class="c1"># ----------------</span>
+<span class="c1"># Licensing Information: Please do not distribute or publish solutions to this</span>
+<span class="c1"># project. You are free to use and extend these projects for educational</span>
+<span class="c1"># purposes. The Pacman AI projects were developed at UC Berkeley, primarily by</span>
+<span class="c1"># John DeNero (denero@cs.berkeley.edu) and Dan Klein (klein@cs.berkeley.edu).</span>
+<span class="c1"># For more info, see http://inst.eecs.berkeley.edu/~cs188/sp09/pacman.html</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">tkinter</span>
+
+<span class="n">_Windows</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">platform</span> <span class="o">==</span> <span class="s1">&#39;win32&#39;</span>  <span class="c1"># True if on Win95/98/NT</span>
+
+<span class="n">_root_window</span> <span class="o">=</span> <span class="bp">None</span>  <span class="c1"># The root window for graphics output</span>
+<span class="n">_canvas</span> <span class="o">=</span> <span class="bp">None</span>  <span class="c1"># The canvas which holds graphics</span>
+<span class="n">_canvas_xs</span> <span class="o">=</span> <span class="bp">None</span>  <span class="c1"># Size of canvas object</span>
+<span class="n">_canvas_ys</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">_canvas_x</span> <span class="o">=</span> <span class="bp">None</span>  <span class="c1"># Current position on canvas</span>
+<span class="n">_canvas_y</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">_canvas_col</span> <span class="o">=</span> <span class="bp">None</span>  <span class="c1"># Current colour (set to black below)</span>
+<span class="n">_canvas_tsize</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">_canvas_tserifs</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">_mouse_enabled</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">_bg_color</span> <span class="o">=</span> <span class="bp">None</span>
+
+
+<span class="k">def</span> <span class="nf">formatColor</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;#</span><span class="si">%02x%02x%02x</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">r</span> <span class="o">*</span> <span class="mi">255</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">g</span> <span class="o">*</span> <span class="mi">255</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="mi">255</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">colorToVector</span><span class="p">(</span><span class="n">color</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span> <span class="o">/</span> <span class="mf">256.0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="n">color</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">color</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">],</span> <span class="n">color</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">7</span><span class="p">]]]</span>
+
+
+<span class="k">if</span> <span class="n">_Windows</span><span class="p">:</span>
+    <span class="n">_canvas_tfonts</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;times new roman&#39;</span><span class="p">,</span> <span class="s1">&#39;lucida console&#39;</span><span class="p">]</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">_canvas_tfonts</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;times&#39;</span><span class="p">,</span> <span class="s1">&#39;lucidasans-24&#39;</span><span class="p">]</span>
+    <span class="k">pass</span>  <span class="c1"># XXX need defaults here</span>
+
+
+<span class="k">def</span> <span class="nf">sleep</span><span class="p">(</span><span class="n">secs</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">_root_window</span>
+    <span class="k">if</span> <span class="n">_root_window</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">secs</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">_root_window</span><span class="o">.</span><span class="n">update_idletasks</span><span class="p">()</span>
+        <span class="n">_root_window</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">1000</span> <span class="o">*</span> <span class="n">secs</span><span class="p">),</span> <span class="n">_root_window</span><span class="o">.</span><span class="n">quit</span><span class="p">)</span>
+        <span class="n">_root_window</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">begin_graphics</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">640</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">formatColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">_root_window</span><span class="p">,</span> <span class="n">_canvas</span><span class="p">,</span> <span class="n">_canvas_x</span><span class="p">,</span> <span class="n">_canvas_y</span><span class="p">,</span> <span class="n">_canvas_xs</span><span class="p">,</span> <span class="n">_canvas_ys</span><span class="p">,</span> <span class="n">_bg_color</span>
+
+    <span class="c1"># Check for duplicate call</span>
+    <span class="k">if</span> <span class="n">_root_window</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="c1"># Lose the window.</span>
+        <span class="n">_root_window</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
+
+    <span class="c1"># Save the canvas size parameters</span>
+    <span class="n">_canvas_xs</span><span class="p">,</span> <span class="n">_canvas_ys</span> <span class="o">=</span> <span class="n">width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">height</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">_canvas_x</span><span class="p">,</span> <span class="n">_canvas_y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_canvas_ys</span>
+    <span class="n">_bg_color</span> <span class="o">=</span> <span class="n">color</span>
+
+    <span class="c1"># Create the root window</span>
+    <span class="n">_root_window</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+    <span class="n">_root_window</span><span class="o">.</span><span class="n">protocol</span><span class="p">(</span><span class="s1">&#39;WM_DELETE_WINDOW&#39;</span><span class="p">,</span> <span class="n">_destroy_window</span><span class="p">)</span>
+    <span class="n">_root_window</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span> <span class="ow">or</span> <span class="s1">&#39;Graphics Window&#39;</span><span class="p">)</span>
+    <span class="n">_root_window</span><span class="o">.</span><span class="n">resizable</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Create the canvas object</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">_canvas</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Canvas</span><span class="p">(</span><span class="n">_root_window</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">height</span><span class="p">)</span>
+        <span class="n">_canvas</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+        <span class="n">draw_background</span><span class="p">()</span>
+        <span class="n">_canvas</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">_root_window</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">raise</span>
+
+    <span class="c1"># Bind to key-down and key-up events</span>
+    <span class="n">_root_window</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;KeyPress&gt;&quot;</span><span class="p">,</span> <span class="n">_keypress</span><span class="p">)</span>
+    <span class="n">_root_window</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;KeyRelease&gt;&quot;</span><span class="p">,</span> <span class="n">_keyrelease</span><span class="p">)</span>
+    <span class="n">_root_window</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;FocusIn&gt;&quot;</span><span class="p">,</span> <span class="n">_clear_keys</span><span class="p">)</span>
+    <span class="n">_root_window</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;FocusOut&gt;&quot;</span><span class="p">,</span> <span class="n">_clear_keys</span><span class="p">)</span>
+    <span class="n">_root_window</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Button-1&gt;&quot;</span><span class="p">,</span> <span class="n">_leftclick</span><span class="p">)</span>
+    <span class="n">_root_window</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Button-2&gt;&quot;</span><span class="p">,</span> <span class="n">_rightclick</span><span class="p">)</span>
+    <span class="n">_root_window</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Button-3&gt;&quot;</span><span class="p">,</span> <span class="n">_rightclick</span><span class="p">)</span>
+    <span class="n">_root_window</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-Button-1&gt;&quot;</span><span class="p">,</span> <span class="n">_ctrl_leftclick</span><span class="p">)</span>
+    <span class="n">_clear_keys</span><span class="p">()</span>
+
+
+<span class="n">_leftclick_loc</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">_rightclick_loc</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">_ctrl_leftclick_loc</span> <span class="o">=</span> <span class="bp">None</span>
+
+
+<span class="k">def</span> <span class="nf">_leftclick</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">_leftclick_loc</span>
+    <span class="n">_leftclick_loc</span> <span class="o">=</span> <span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">event</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_rightclick</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">_rightclick_loc</span>
+    <span class="n">_rightclick_loc</span> <span class="o">=</span> <span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">event</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_ctrl_leftclick</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">_ctrl_leftclick_loc</span>
+    <span class="n">_ctrl_leftclick_loc</span> <span class="o">=</span> <span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">event</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">wait_for_click</span><span class="p">():</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">global</span> <span class="n">_leftclick_loc</span>
+        <span class="k">global</span> <span class="n">_rightclick_loc</span>
+        <span class="k">global</span> <span class="n">_ctrl_leftclick_loc</span>
+        <span class="k">if</span> <span class="n">_leftclick_loc</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">_leftclick_loc</span>
+            <span class="n">_leftclick_loc</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">return</span> <span class="n">val</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span>
+        <span class="k">if</span> <span class="n">_rightclick_loc</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">_rightclick_loc</span>
+            <span class="n">_rightclick_loc</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">return</span> <span class="n">val</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span>
+        <span class="k">if</span> <span class="n">_ctrl_leftclick_loc</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">_ctrl_leftclick_loc</span>
+            <span class="n">_ctrl_leftclick_loc</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">return</span> <span class="n">val</span><span class="p">,</span> <span class="s1">&#39;ctrl_left&#39;</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">draw_background</span><span class="p">():</span>
+    <span class="n">corners</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">_canvas_ys</span><span class="p">),</span> <span class="p">(</span><span class="n">_canvas_xs</span><span class="p">,</span> <span class="n">_canvas_ys</span><span class="p">),</span> <span class="p">(</span><span class="n">_canvas_xs</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span>
+    <span class="n">polygon</span><span class="p">(</span><span class="n">corners</span><span class="p">,</span> <span class="n">_bg_color</span><span class="p">,</span> <span class="n">fillColor</span><span class="o">=</span><span class="n">_bg_color</span><span class="p">,</span> <span class="n">filled</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">smoothed</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_destroy_window</span><span class="p">(</span><span class="n">event</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+
+<span class="c1">#    global _root_window</span>
+<span class="c1">#    _root_window.destroy()</span>
+<span class="c1">#    _root_window = None</span>
+<span class="c1"># print &quot;DESTROY&quot;</span>
+
+<span class="k">def</span> <span class="nf">end_graphics</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">_root_window</span><span class="p">,</span> <span class="n">_canvas</span><span class="p">,</span> <span class="n">_mouse_enabled</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">_root_window</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">_root_window</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">SystemExit</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Ending graphics raised an exception:&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">_root_window</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">_canvas</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">_mouse_enabled</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">_clear_keys</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">clear_screen</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">_canvas_x</span><span class="p">,</span> <span class="n">_canvas_y</span>
+    <span class="n">_canvas</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+    <span class="n">draw_background</span><span class="p">()</span>
+    <span class="n">_canvas_x</span><span class="p">,</span> <span class="n">_canvas_y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_canvas_ys</span>
+
+
+<span class="k">def</span> <span class="nf">polygon</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">outlineColor</span><span class="p">,</span> <span class="n">fillColor</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">filled</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">smoothed</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">behind</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">coord</span> <span class="ow">in</span> <span class="n">coords</span><span class="p">:</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coord</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coord</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">fillColor</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">fillColor</span> <span class="o">=</span> <span class="n">outlineColor</span>
+    <span class="k">if</span> <span class="n">filled</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">fillColor</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">poly</span> <span class="o">=</span> <span class="n">_canvas</span><span class="o">.</span><span class="n">create_polygon</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">outline</span><span class="o">=</span><span class="n">outlineColor</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">fillColor</span><span class="p">,</span> <span class="n">smooth</span><span class="o">=</span><span class="n">smoothed</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">behind</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">_canvas</span><span class="o">.</span><span class="n">tag_lower</span><span class="p">(</span><span class="n">poly</span><span class="p">,</span> <span class="n">behind</span><span class="p">)</span>  <span class="c1"># Higher should be more visible</span>
+    <span class="k">return</span> <span class="n">poly</span>
+
+
+<span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">filled</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">behind</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pos</span>
+    <span class="n">coords</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span> <span class="o">-</span> <span class="n">r</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="n">r</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">r</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="n">r</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">r</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">r</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">r</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">r</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">polygon</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">filled</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">behind</span><span class="o">=</span><span class="n">behind</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">circle</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">outlineColor</span><span class="p">,</span> <span class="n">fillColor</span><span class="p">,</span> <span class="n">endpoints</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;pieslice&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pos</span>
+    <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">r</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">r</span>
+    <span class="n">y0</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">r</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">r</span>
+    <span class="k">if</span> <span class="n">endpoints</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">359</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">endpoints</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">360</span>
+
+    <span class="k">return</span> <span class="n">_canvas</span><span class="o">.</span><span class="n">create_arc</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">outline</span><span class="o">=</span><span class="n">outlineColor</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">fillColor</span><span class="p">,</span>
+                              <span class="n">extent</span><span class="o">=</span><span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">start</span><span class="o">=</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">image</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="s2">&quot;../../blueghost.gif&quot;</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pos</span>
+    <span class="c1"># img = PhotoImage(file=file)</span>
+    <span class="k">return</span> <span class="n">_canvas</span><span class="o">.</span><span class="n">create_image</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="nb">file</span><span class="o">=</span><span class="nb">file</span><span class="p">),</span> <span class="n">anchor</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">NW</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">refresh</span><span class="p">():</span>
+    <span class="n">_canvas</span><span class="o">.</span><span class="n">update_idletasks</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">moveCircle</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">endpoints</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">_canvas_x</span><span class="p">,</span> <span class="n">_canvas_y</span>
+
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pos</span>
+    <span class="c1">#    x0, x1 = x - r, x + r + 1</span>
+    <span class="c1">#    y0, y1 = y - r, y + r + 1</span>
+    <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">r</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">r</span>
+    <span class="n">y0</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">r</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">r</span>
+    <span class="k">if</span> <span class="n">endpoints</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">359</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">endpoints</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">360</span>
+
+    <span class="n">edit</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s1">&#39;extent&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">move_to</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">edit</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">_canvas</span><span class="o">.</span><span class="n">itemconfigure</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="o">**</span><span class="nb">dict</span><span class="p">(</span><span class="n">args</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">text</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">contents</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="s1">&#39;Helvetica&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s2">&quot;nw&quot;</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">_canvas_x</span><span class="p">,</span> <span class="n">_canvas_y</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pos</span>
+    <span class="n">font</span> <span class="o">=</span> <span class="p">(</span><span class="n">font</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">size</span><span class="p">),</span> <span class="n">style</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_canvas</span><span class="o">.</span><span class="n">create_text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">contents</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">font</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="n">anchor</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">changeText</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">newText</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">):</span>
+    <span class="n">_canvas</span><span class="o">.</span><span class="n">itemconfigure</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">newText</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">font</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">_canvas</span><span class="o">.</span><span class="n">itemconfigure</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="n">font</span><span class="p">,</span> <span class="s1">&#39;-</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">size</span><span class="p">,</span> <span class="n">style</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">changeColor</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">newColor</span><span class="p">):</span>
+    <span class="n">_canvas</span><span class="o">.</span><span class="n">itemconfigure</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">newColor</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">line</span><span class="p">(</span><span class="n">here</span><span class="p">,</span> <span class="n">there</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">formatColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="n">here</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">here</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">there</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">there</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">_canvas</span><span class="o">.</span><span class="n">create_line</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">)</span>
+
+
+<span class="c1">##############################################################################</span>
+<span class="c1">### Keypress handling ########################################################</span>
+<span class="c1">##############################################################################</span>
+
+<span class="c1"># We bind to key-down and key-up events.</span>
+
+<span class="n">_keysdown</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">_keyswaiting</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="c1"># This holds an unprocessed key release.  We delay key releases by up to</span>
+<span class="c1"># one call to keys_pressed() to get round a problem with auto repeat.</span>
+<span class="n">_got_release</span> <span class="o">=</span> <span class="bp">None</span>
+
+
+<span class="k">def</span> <span class="nf">_keypress</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">_got_release</span>
+    <span class="n">_keysdown</span><span class="p">[</span><span class="n">event</span><span class="o">.</span><span class="n">keysym</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">_keyswaiting</span><span class="p">[</span><span class="n">event</span><span class="o">.</span><span class="n">keysym</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">_got_release</span> <span class="o">=</span> <span class="bp">None</span>
+
+
+<span class="k">def</span> <span class="nf">_keyrelease</span><span class="p">(</span><span class="n">event</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">_got_release</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">del</span> <span class="n">_keysdown</span><span class="p">[</span><span class="n">event</span><span class="o">.</span><span class="n">keysym</span><span class="p">]</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="n">_got_release</span> <span class="o">=</span> <span class="mi">1</span>
+
+
+<span class="k">def</span> <span class="nf">_clear_keys</span><span class="p">(</span><span class="n">event</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">_keysdown</span><span class="p">,</span> <span class="n">_got_release</span><span class="p">,</span> <span class="n">_keyswaiting</span>
+    <span class="n">_keysdown</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">_keyswaiting</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">_got_release</span> <span class="o">=</span> <span class="bp">None</span>
+
+
+<span class="k">def</span> <span class="nf">keys_pressed</span><span class="p">():</span>
+    <span class="c1"># if _got_release:</span>
+    <span class="c1">#    pass</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">_keysdown</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+
+<span class="k">def</span> <span class="nf">keys_waiting</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">_keyswaiting</span>
+    <span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">_keyswaiting</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="n">_keyswaiting</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">return</span> <span class="n">keys</span>
+
+
+<span class="c1"># Block for a list of keys...</span>
+
+<span class="k">def</span> <span class="nf">wait_for_keys</span><span class="p">():</span>
+    <span class="n">keys</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">keys</span><span class="p">:</span>
+        <span class="n">keys</span> <span class="o">=</span> <span class="n">keys_pressed</span><span class="p">()</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">keys</span>
+
+
+<span class="k">def</span> <span class="nf">remove_from_screen</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">_canvas</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">move_to</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;incomprehensible coordinates&#39;</span><span class="p">)</span>
+
+    <span class="n">horiz</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">newCoords</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">current_x</span><span class="p">,</span> <span class="n">current_y</span> <span class="o">=</span> <span class="n">_canvas</span><span class="o">.</span><span class="n">coords</span><span class="p">(</span><span class="nb">object</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># first point</span>
+    <span class="k">for</span> <span class="n">coord</span> <span class="ow">in</span> <span class="n">_canvas</span><span class="o">.</span><span class="n">coords</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">horiz</span><span class="p">:</span>
+            <span class="n">inc</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">current_x</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">inc</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">current_y</span>
+        <span class="n">horiz</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">horiz</span>
+
+        <span class="n">newCoords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coord</span> <span class="o">+</span> <span class="n">inc</span><span class="p">)</span>
+
+    <span class="n">_canvas</span><span class="o">.</span><span class="n">coords</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="o">*</span><span class="n">newCoords</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">move_by</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;incomprehensible coordinates&#39;</span><span class="p">)</span>
+
+    <span class="n">horiz</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">newCoords</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">coord</span> <span class="ow">in</span> <span class="n">_canvas</span><span class="o">.</span><span class="n">coords</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">horiz</span><span class="p">:</span>
+            <span class="n">inc</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">inc</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="n">horiz</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">horiz</span>
+
+        <span class="n">newCoords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coord</span> <span class="o">+</span> <span class="n">inc</span><span class="p">)</span>
+
+    <span class="n">_canvas</span><span class="o">.</span><span class="n">coords</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="o">*</span><span class="n">newCoords</span><span class="p">)</span>
+
+
+<span class="n">ghost_shape</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">),</span>
+    <span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="o">-</span> <span class="mf">0.75</span><span class="p">),</span>
+    <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">),</span>
+    <span class="p">(</span><span class="mf">0.75</span><span class="p">,</span> <span class="o">-</span> <span class="mf">0.75</span><span class="p">),</span>
+    <span class="p">(</span><span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+    <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">),</span>
+    <span class="p">(</span><span class="o">-</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">),</span>
+    <span class="p">(</span><span class="o">-</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span>
+    <span class="p">(</span><span class="o">-</span> <span class="mf">0.75</span><span class="p">,</span> <span class="o">-</span> <span class="mf">0.75</span><span class="p">),</span>
+    <span class="p">(</span><span class="o">-</span> <span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">),</span>
+    <span class="p">(</span><span class="o">-</span> <span class="mf">0.25</span><span class="p">,</span> <span class="o">-</span> <span class="mf">0.75</span><span class="p">)</span>
+<span class="p">]</span>
+</pre></div>
+
+  </div>
+
+  </header>
+
+  <section id="section-items">
+    <h2 class="section-title" id="header-variables">Module variables</h2>
+      <div class="item">
+      <p id="graphicsUtils.ghost_shape" class="name">var <span class="ident">ghost_shape</span></p>
+      
+  
+  <div class="source_cont">
+</div>
+
+      </div>
+
+    <h2 class="section-title" id="header-functions">Functions</h2>
+      
+  <div class="item">
+    <div class="name def" id="graphicsUtils.begin_graphics">
+    <p>def <span class="ident">begin_graphics</span>(</p><p>width=640, height=480, color=&#39;#000000&#39;, title=None)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-graphicsUtils.begin_graphics', this);">Show source &equiv;</a></p>
+  <div id="source-graphicsUtils.begin_graphics" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">begin_graphics</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">640</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">480</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">formatColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">_root_window</span><span class="p">,</span> <span class="n">_canvas</span><span class="p">,</span> <span class="n">_canvas_x</span><span class="p">,</span> <span class="n">_canvas_y</span><span class="p">,</span> <span class="n">_canvas_xs</span><span class="p">,</span> <span class="n">_canvas_ys</span><span class="p">,</span> <span class="n">_bg_color</span>
+
+    <span class="c1"># Check for duplicate call</span>
+    <span class="k">if</span> <span class="n">_root_window</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="c1"># Lose the window.</span>
+        <span class="n">_root_window</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
+
+    <span class="c1"># Save the canvas size parameters</span>
+    <span class="n">_canvas_xs</span><span class="p">,</span> <span class="n">_canvas_ys</span> <span class="o">=</span> <span class="n">width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">height</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">_canvas_x</span><span class="p">,</span> <span class="n">_canvas_y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_canvas_ys</span>
+    <span class="n">_bg_color</span> <span class="o">=</span> <span class="n">color</span>
+
+    <span class="c1"># Create the root window</span>
+    <span class="n">_root_window</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Tk</span><span class="p">()</span>
+    <span class="n">_root_window</span><span class="o">.</span><span class="n">protocol</span><span class="p">(</span><span class="s1">&#39;WM_DELETE_WINDOW&#39;</span><span class="p">,</span> <span class="n">_destroy_window</span><span class="p">)</span>
+    <span class="n">_root_window</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span> <span class="ow">or</span> <span class="s1">&#39;Graphics Window&#39;</span><span class="p">)</span>
+    <span class="n">_root_window</span><span class="o">.</span><span class="n">resizable</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Create the canvas object</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">_canvas</span> <span class="o">=</span> <span class="n">tkinter</span><span class="o">.</span><span class="n">Canvas</span><span class="p">(</span><span class="n">_root_window</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">height</span><span class="p">)</span>
+        <span class="n">_canvas</span><span class="o">.</span><span class="n">pack</span><span class="p">()</span>
+        <span class="n">draw_background</span><span class="p">()</span>
+        <span class="n">_canvas</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">_root_window</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">raise</span>
+
+    <span class="c1"># Bind to key-down and key-up events</span>
+    <span class="n">_root_window</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;KeyPress&gt;&quot;</span><span class="p">,</span> <span class="n">_keypress</span><span class="p">)</span>
+    <span class="n">_root_window</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;KeyRelease&gt;&quot;</span><span class="p">,</span> <span class="n">_keyrelease</span><span class="p">)</span>
+    <span class="n">_root_window</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;FocusIn&gt;&quot;</span><span class="p">,</span> <span class="n">_clear_keys</span><span class="p">)</span>
+    <span class="n">_root_window</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;FocusOut&gt;&quot;</span><span class="p">,</span> <span class="n">_clear_keys</span><span class="p">)</span>
+    <span class="n">_root_window</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Button-1&gt;&quot;</span><span class="p">,</span> <span class="n">_leftclick</span><span class="p">)</span>
+    <span class="n">_root_window</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Button-2&gt;&quot;</span><span class="p">,</span> <span class="n">_rightclick</span><span class="p">)</span>
+    <span class="n">_root_window</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Button-3&gt;&quot;</span><span class="p">,</span> <span class="n">_rightclick</span><span class="p">)</span>
+    <span class="n">_root_window</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="s2">&quot;&lt;Control-Button-1&gt;&quot;</span><span class="p">,</span> <span class="n">_ctrl_leftclick</span><span class="p">)</span>
+    <span class="n">_clear_keys</span><span class="p">()</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="graphicsUtils.changeColor">
+    <p>def <span class="ident">changeColor</span>(</p><p>id, newColor)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-graphicsUtils.changeColor', this);">Show source &equiv;</a></p>
+  <div id="source-graphicsUtils.changeColor" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">changeColor</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">newColor</span><span class="p">):</span>
+    <span class="n">_canvas</span><span class="o">.</span><span class="n">itemconfigure</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">newColor</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="graphicsUtils.changeText">
+    <p>def <span class="ident">changeText</span>(</p><p>id, newText, font=None, size=12, style=&#39;normal&#39;)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-graphicsUtils.changeText', this);">Show source &equiv;</a></p>
+  <div id="source-graphicsUtils.changeText" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">changeText</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">newText</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">):</span>
+    <span class="n">_canvas</span><span class="o">.</span><span class="n">itemconfigure</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">newText</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">font</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">_canvas</span><span class="o">.</span><span class="n">itemconfigure</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="n">font</span><span class="p">,</span> <span class="s1">&#39;-</span><span class="si">%d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">size</span><span class="p">,</span> <span class="n">style</span><span class="p">))</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="graphicsUtils.circle">
+    <p>def <span class="ident">circle</span>(</p><p>pos, r, outlineColor, fillColor, endpoints=None, style=&#39;pieslice&#39;, width=2)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-graphicsUtils.circle', this);">Show source &equiv;</a></p>
+  <div id="source-graphicsUtils.circle" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">circle</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">outlineColor</span><span class="p">,</span> <span class="n">fillColor</span><span class="p">,</span> <span class="n">endpoints</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;pieslice&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pos</span>
+    <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">r</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">r</span>
+    <span class="n">y0</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">r</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">r</span>
+    <span class="k">if</span> <span class="n">endpoints</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">359</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">endpoints</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">360</span>
+
+    <span class="k">return</span> <span class="n">_canvas</span><span class="o">.</span><span class="n">create_arc</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">outline</span><span class="o">=</span><span class="n">outlineColor</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">fillColor</span><span class="p">,</span>
+                              <span class="n">extent</span><span class="o">=</span><span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">start</span><span class="o">=</span><span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="graphicsUtils.clear_screen">
+    <p>def <span class="ident">clear_screen</span>(</p><p>)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-graphicsUtils.clear_screen', this);">Show source &equiv;</a></p>
+  <div id="source-graphicsUtils.clear_screen" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">clear_screen</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">_canvas_x</span><span class="p">,</span> <span class="n">_canvas_y</span>
+    <span class="n">_canvas</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+    <span class="n">draw_background</span><span class="p">()</span>
+    <span class="n">_canvas_x</span><span class="p">,</span> <span class="n">_canvas_y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">_canvas_ys</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="graphicsUtils.colorToVector">
+    <p>def <span class="ident">colorToVector</span>(</p><p>color)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-graphicsUtils.colorToVector', this);">Show source &equiv;</a></p>
+  <div id="source-graphicsUtils.colorToVector" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">colorToVector</span><span class="p">(</span><span class="n">color</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span> <span class="o">/</span> <span class="mf">256.0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="n">color</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">color</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">],</span> <span class="n">color</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">7</span><span class="p">]]]</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="graphicsUtils.draw_background">
+    <p>def <span class="ident">draw_background</span>(</p><p>)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-graphicsUtils.draw_background', this);">Show source &equiv;</a></p>
+  <div id="source-graphicsUtils.draw_background" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">draw_background</span><span class="p">():</span>
+    <span class="n">corners</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">_canvas_ys</span><span class="p">),</span> <span class="p">(</span><span class="n">_canvas_xs</span><span class="p">,</span> <span class="n">_canvas_ys</span><span class="p">),</span> <span class="p">(</span><span class="n">_canvas_xs</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span>
+    <span class="n">polygon</span><span class="p">(</span><span class="n">corners</span><span class="p">,</span> <span class="n">_bg_color</span><span class="p">,</span> <span class="n">fillColor</span><span class="o">=</span><span class="n">_bg_color</span><span class="p">,</span> <span class="n">filled</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">smoothed</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="graphicsUtils.edit">
+    <p>def <span class="ident">edit</span>(</p><p>id, *args)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-graphicsUtils.edit', this);">Show source &equiv;</a></p>
+  <div id="source-graphicsUtils.edit" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">edit</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">_canvas</span><span class="o">.</span><span class="n">itemconfigure</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="o">**</span><span class="nb">dict</span><span class="p">(</span><span class="n">args</span><span class="p">))</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="graphicsUtils.end_graphics">
+    <p>def <span class="ident">end_graphics</span>(</p><p>)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-graphicsUtils.end_graphics', this);">Show source &equiv;</a></p>
+  <div id="source-graphicsUtils.end_graphics" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">end_graphics</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">_root_window</span><span class="p">,</span> <span class="n">_canvas</span><span class="p">,</span> <span class="n">_mouse_enabled</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">_root_window</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">_root_window</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">SystemExit</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Ending graphics raised an exception:&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">_root_window</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">_canvas</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">_mouse_enabled</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">_clear_keys</span><span class="p">()</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="graphicsUtils.formatColor">
+    <p>def <span class="ident">formatColor</span>(</p><p>r, g, b)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-graphicsUtils.formatColor', this);">Show source &equiv;</a></p>
+  <div id="source-graphicsUtils.formatColor" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">formatColor</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s1">&#39;#</span><span class="si">%02x%02x%02x</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">r</span> <span class="o">*</span> <span class="mi">255</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">g</span> <span class="o">*</span> <span class="mi">255</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="mi">255</span><span class="p">))</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="graphicsUtils.image">
+    <p>def <span class="ident">image</span>(</p><p>pos, file=&#39;../../blueghost.gif&#39;)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-graphicsUtils.image', this);">Show source &equiv;</a></p>
+  <div id="source-graphicsUtils.image" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">image</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="nb">file</span><span class="o">=</span><span class="s2">&quot;../../blueghost.gif&quot;</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pos</span>
+    <span class="c1"># img = PhotoImage(file=file)</span>
+    <span class="k">return</span> <span class="n">_canvas</span><span class="o">.</span><span class="n">create_image</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">PhotoImage</span><span class="p">(</span><span class="nb">file</span><span class="o">=</span><span class="nb">file</span><span class="p">),</span> <span class="n">anchor</span><span class="o">=</span><span class="n">tkinter</span><span class="o">.</span><span class="n">NW</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="graphicsUtils.keys_pressed">
+    <p>def <span class="ident">keys_pressed</span>(</p><p>)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-graphicsUtils.keys_pressed', this);">Show source &equiv;</a></p>
+  <div id="source-graphicsUtils.keys_pressed" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">keys_pressed</span><span class="p">():</span>
+    <span class="c1"># if _got_release:</span>
+    <span class="c1">#    pass</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">_keysdown</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="graphicsUtils.keys_waiting">
+    <p>def <span class="ident">keys_waiting</span>(</p><p>)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-graphicsUtils.keys_waiting', this);">Show source &equiv;</a></p>
+  <div id="source-graphicsUtils.keys_waiting" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">keys_waiting</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">_keyswaiting</span>
+    <span class="n">keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">_keyswaiting</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="n">_keyswaiting</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">return</span> <span class="n">keys</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="graphicsUtils.line">
+    <p>def <span class="ident">line</span>(</p><p>here, there, color=&#39;#000000&#39;, width=2)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-graphicsUtils.line', this);">Show source &equiv;</a></p>
+  <div id="source-graphicsUtils.line" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">line</span><span class="p">(</span><span class="n">here</span><span class="p">,</span> <span class="n">there</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">formatColor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="n">here</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">here</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">there</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">there</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">_canvas</span><span class="o">.</span><span class="n">create_line</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="graphicsUtils.moveCircle">
+    <p>def <span class="ident">moveCircle</span>(</p><p>id, pos, r, endpoints=None)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-graphicsUtils.moveCircle', this);">Show source &equiv;</a></p>
+  <div id="source-graphicsUtils.moveCircle" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">moveCircle</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">endpoints</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">_canvas_x</span><span class="p">,</span> <span class="n">_canvas_y</span>
+
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pos</span>
+    <span class="c1">#    x0, x1 = x - r, x + r + 1</span>
+    <span class="c1">#    y0, y1 = y - r, y + r + 1</span>
+    <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">r</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x</span> <span class="o">+</span> <span class="n">r</span>
+    <span class="n">y0</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">r</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">r</span>
+    <span class="k">if</span> <span class="n">endpoints</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">359</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">endpoints</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">360</span>
+
+    <span class="n">edit</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;start&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="p">(</span><span class="s1">&#39;extent&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">e</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">move_to</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="graphicsUtils.move_by">
+    <p>def <span class="ident">move_by</span>(</p><p>object, x, y=None)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-graphicsUtils.move_by', this);">Show source &equiv;</a></p>
+  <div id="source-graphicsUtils.move_by" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">move_by</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;incomprehensible coordinates&#39;</span><span class="p">)</span>
+
+    <span class="n">horiz</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">newCoords</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">coord</span> <span class="ow">in</span> <span class="n">_canvas</span><span class="o">.</span><span class="n">coords</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">horiz</span><span class="p">:</span>
+            <span class="n">inc</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">inc</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="n">horiz</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">horiz</span>
+
+        <span class="n">newCoords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coord</span> <span class="o">+</span> <span class="n">inc</span><span class="p">)</span>
+
+    <span class="n">_canvas</span><span class="o">.</span><span class="n">coords</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="o">*</span><span class="n">newCoords</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="graphicsUtils.move_to">
+    <p>def <span class="ident">move_to</span>(</p><p>object, x, y=None)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-graphicsUtils.move_to', this);">Show source &equiv;</a></p>
+  <div id="source-graphicsUtils.move_to" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">move_to</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;incomprehensible coordinates&#39;</span><span class="p">)</span>
+
+    <span class="n">horiz</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="n">newCoords</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">current_x</span><span class="p">,</span> <span class="n">current_y</span> <span class="o">=</span> <span class="n">_canvas</span><span class="o">.</span><span class="n">coords</span><span class="p">(</span><span class="nb">object</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># first point</span>
+    <span class="k">for</span> <span class="n">coord</span> <span class="ow">in</span> <span class="n">_canvas</span><span class="o">.</span><span class="n">coords</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">horiz</span><span class="p">:</span>
+            <span class="n">inc</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">current_x</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">inc</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">current_y</span>
+        <span class="n">horiz</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">horiz</span>
+
+        <span class="n">newCoords</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coord</span> <span class="o">+</span> <span class="n">inc</span><span class="p">)</span>
+
+    <span class="n">_canvas</span><span class="o">.</span><span class="n">coords</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="o">*</span><span class="n">newCoords</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="graphicsUtils.polygon">
+    <p>def <span class="ident">polygon</span>(</p><p>coords, outlineColor, fillColor=None, filled=1, smoothed=1, behind=0, width=1)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-graphicsUtils.polygon', this);">Show source &equiv;</a></p>
+  <div id="source-graphicsUtils.polygon" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">polygon</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">outlineColor</span><span class="p">,</span> <span class="n">fillColor</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">filled</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">smoothed</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">behind</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">coord</span> <span class="ow">in</span> <span class="n">coords</span><span class="p">:</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coord</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">coord</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">fillColor</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">fillColor</span> <span class="o">=</span> <span class="n">outlineColor</span>
+    <span class="k">if</span> <span class="n">filled</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">fillColor</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">poly</span> <span class="o">=</span> <span class="n">_canvas</span><span class="o">.</span><span class="n">create_polygon</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">outline</span><span class="o">=</span><span class="n">outlineColor</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">fillColor</span><span class="p">,</span> <span class="n">smooth</span><span class="o">=</span><span class="n">smoothed</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">behind</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">_canvas</span><span class="o">.</span><span class="n">tag_lower</span><span class="p">(</span><span class="n">poly</span><span class="p">,</span> <span class="n">behind</span><span class="p">)</span>  <span class="c1"># Higher should be more visible</span>
+    <span class="k">return</span> <span class="n">poly</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="graphicsUtils.refresh">
+    <p>def <span class="ident">refresh</span>(</p><p>)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-graphicsUtils.refresh', this);">Show source &equiv;</a></p>
+  <div id="source-graphicsUtils.refresh" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">refresh</span><span class="p">():</span>
+    <span class="n">_canvas</span><span class="o">.</span><span class="n">update_idletasks</span><span class="p">()</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="graphicsUtils.remove_from_screen">
+    <p>def <span class="ident">remove_from_screen</span>(</p><p>x)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-graphicsUtils.remove_from_screen', this);">Show source &equiv;</a></p>
+  <div id="source-graphicsUtils.remove_from_screen" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">remove_from_screen</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">_canvas</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="graphicsUtils.sleep">
+    <p>def <span class="ident">sleep</span>(</p><p>secs)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-graphicsUtils.sleep', this);">Show source &equiv;</a></p>
+  <div id="source-graphicsUtils.sleep" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">sleep</span><span class="p">(</span><span class="n">secs</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">_root_window</span>
+    <span class="k">if</span> <span class="n">_root_window</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">secs</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">_root_window</span><span class="o">.</span><span class="n">update_idletasks</span><span class="p">()</span>
+        <span class="n">_root_window</span><span class="o">.</span><span class="n">after</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mi">1000</span> <span class="o">*</span> <span class="n">secs</span><span class="p">),</span> <span class="n">_root_window</span><span class="o">.</span><span class="n">quit</span><span class="p">)</span>
+        <span class="n">_root_window</span><span class="o">.</span><span class="n">mainloop</span><span class="p">()</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="graphicsUtils.square">
+    <p>def <span class="ident">square</span>(</p><p>pos, r, color, filled=1, behind=0)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-graphicsUtils.square', this);">Show source &equiv;</a></p>
+  <div id="source-graphicsUtils.square" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">filled</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">behind</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pos</span>
+    <span class="n">coords</span> <span class="o">=</span> <span class="p">[(</span><span class="n">x</span> <span class="o">-</span> <span class="n">r</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="n">r</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">r</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="n">r</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">r</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">r</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">r</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">r</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="n">polygon</span><span class="p">(</span><span class="n">coords</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">filled</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">behind</span><span class="o">=</span><span class="n">behind</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="graphicsUtils.text">
+    <p>def <span class="ident">text</span>(</p><p>pos, color, contents, font=&#39;Helvetica&#39;, size=12, style=&#39;normal&#39;, anchor=&#39;nw&#39;)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-graphicsUtils.text', this);">Show source &equiv;</a></p>
+  <div id="source-graphicsUtils.text" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">text</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">contents</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="s1">&#39;Helvetica&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s2">&quot;nw&quot;</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">_canvas_x</span><span class="p">,</span> <span class="n">_canvas_y</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pos</span>
+    <span class="n">font</span> <span class="o">=</span> <span class="p">(</span><span class="n">font</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">size</span><span class="p">),</span> <span class="n">style</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_canvas</span><span class="o">.</span><span class="n">create_text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">contents</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">font</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="n">anchor</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="graphicsUtils.wait_for_click">
+    <p>def <span class="ident">wait_for_click</span>(</p><p>)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-graphicsUtils.wait_for_click', this);">Show source &equiv;</a></p>
+  <div id="source-graphicsUtils.wait_for_click" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">wait_for_click</span><span class="p">():</span>
+    <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+        <span class="k">global</span> <span class="n">_leftclick_loc</span>
+        <span class="k">global</span> <span class="n">_rightclick_loc</span>
+        <span class="k">global</span> <span class="n">_ctrl_leftclick_loc</span>
+        <span class="k">if</span> <span class="n">_leftclick_loc</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">_leftclick_loc</span>
+            <span class="n">_leftclick_loc</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">return</span> <span class="n">val</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span>
+        <span class="k">if</span> <span class="n">_rightclick_loc</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">_rightclick_loc</span>
+            <span class="n">_rightclick_loc</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">return</span> <span class="n">val</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span>
+        <span class="k">if</span> <span class="n">_ctrl_leftclick_loc</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">_ctrl_leftclick_loc</span>
+            <span class="n">_ctrl_leftclick_loc</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="k">return</span> <span class="n">val</span><span class="p">,</span> <span class="s1">&#39;ctrl_left&#39;</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+      
+  <div class="item">
+    <div class="name def" id="graphicsUtils.wait_for_keys">
+    <p>def <span class="ident">wait_for_keys</span>(</p><p>)</p>
+    </div>
+    
+
+    
+  
+  <div class="source_cont">
+  <p class="source_link"><a href="javascript:void(0);" onclick="toggle('source-graphicsUtils.wait_for_keys', this);">Show source &equiv;</a></p>
+  <div id="source-graphicsUtils.wait_for_keys" class="source">
+    <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">wait_for_keys</span><span class="p">():</span>
+    <span class="n">keys</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">keys</span><span class="p">:</span>
+        <span class="n">keys</span> <span class="o">=</span> <span class="n">keys_pressed</span><span class="p">()</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">keys</span>
+</pre></div>
+
+  </div>
+</div>
+
+  </div>
+  
+
+
+  </section>
+
+    </article>
+  <div class="clear"> </div>
+  <footer id="footer">
+    <p>
+      Documentation generated by
+      <a href="https://github.com/BurntSushi/pdoc">pdoc 0.3.2</a>
+    </p>
+
+    <p>pdoc is in the public domain with the
+      <a href="http://unlicense.org">UNLICENSE</a></p>
+
+    <p>Design by <a href="http://nadh.in">Kailash Nadh</a></p>
+  </footer>
+</div>
+</body>
+</html>
