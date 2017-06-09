@@ -2,6 +2,7 @@
 # COMP2019 ASSIGNMENT 2 2017
 #
 import util
+from game import Actions
 from samples import prepare_dataset
 from decisionTreeUtils import extract_decisiontree_rules
 
@@ -40,8 +41,7 @@ def extract_action_features(gameState, action):
     features = dict()
     successorState = gameState.generateSuccessor(0, action)
     features['score'] = successorState.getScore()  # keep this?
-    "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    #util.raiseNotDefined()
 
     # extract the grid of food and wall locations and get the ghost locations
     food = gameState.getFood()
@@ -70,6 +70,7 @@ def extract_action_features(gameState, action):
         # will diverge wildly
         features["closest-food"] = float(dist) / (walls.width * walls.height)
     features.divideAll(10.0)
+    print(features)
     return features
 
 
