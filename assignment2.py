@@ -2,6 +2,7 @@
 # COMP2019 ASSIGNMENT 2 2017
 #
 import util
+import numpy as np
 from game import Actions
 from samples import prepare_dataset
 from sklearn.neural_network import MLPClassifier
@@ -90,8 +91,8 @@ def do_agent(agent):
     #
     # QUESTION 2
     #
-    clf = tree.DecisionTreeClassifier()
-    clf.fit(X, y) # training data
+    #clf = tree.DecisionTreeClassifier()
+    #clf.fit(X, y) # training data
 
     #
     # QUESTION 3
@@ -100,21 +101,21 @@ def do_agent(agent):
     # 110171506
 
     # TRAINING data
-    y_pred = clf.predict(X)
-    print('Correctly predicted on TRAINING set: {}, errors: {}'.format(sum(y==y_pred), sum(y!=y_pred)))
-    print(classification_report(y, y_pred))
-    print('Accuracy on TRAINING set: {:.2f}'.format(accuracy_score(y, y_pred)) , '\n')
-    print("Confusion Matrix:\n "," ".join(["{:3d}".format(d) for d in clf.classes_]),"<-- PREDICTED LABEL")
-    print(confusion_matrix(y,y_pred,labels=clf.classes_))
+    #y_pred = clf.predict(X)
+    #print('Correctly predicted on TRAINING set: {}, errors: {}'.format(sum(y==y_pred), sum(y!=y_pred)))
+    #print(classification_report(y, y_pred))
+    #print('Accuracy on TRAINING set: {:.2f}'.format(accuracy_score(y, y_pred)) , '\n')
+    #print("Confusion Matrix:\n "," ".join(["{:3d}".format(d) for d in clf.classes_]),"<-- PREDICTED LABEL")
+    #print(confusion_matrix(y,y_pred,labels=clf.classes_))
 
 
     # TEST data
     #y_pred = clf.predict(Xt)
-    print('Correctly predicted on TEST set: {}, errors: {}'.format(sum(yt==y_pred), sum(yt!=y_pred)))
-    print(classification_report(yt, y_pred))
-    print('Accuracy on TEST set: {:.2f}'.format(accuracy_score(yt, y_pred)))
-    print("Confusion Matrix:\n "," ".join(["{:3d}".format(d) for d in clf.classes_]),"<-- PREDICTED LABEL")
-    print(confusion_matrix(yt,y_pred,labels=clf.classes_), "\n")
+    #print('Correctly predicted on TEST set: {}, errors: {}'.format(sum(yt==y_pred), sum(yt!=y_pred)))
+    #print(classification_report(yt, y_pred))
+    #print('Accuracy on TEST set: {:.2f}'.format(accuracy_score(yt, y_pred)))
+    #print("Confusion Matrix:\n "," ".join(["{:3d}".format(d) for d in clf.classes_]),"<-- PREDICTED LABEL")
+    #print(confusion_matrix(yt,y_pred,labels=clf.classes_), "\n")
         
     
     #
@@ -122,30 +123,45 @@ def do_agent(agent):
     #
 
     # Multi-Layer-Perceptron
-    mlp = MLPClassifier(max_iter=5000)
-    mlp.fit(X, y)
+    #mlp = MLPClassifier(max_iter=5000)
+    #mlp.fit(X, y)
     
     # TRAINING data
-    y_pred = mlp.predict(X)
-    print('Correctly predicted on TRAINING set with MLP classifier: {}, errors: {}'.format(sum(y==y_pred), sum(y!=y_pred)))
-    print(classification_report(y, y_pred))
-    print('Accuracy on TRAINING set with MLP classifier: {:.2f}'.format(accuracy_score(y, y_pred)))
-    print("Confusion Matrix:\n "," ".join(["{:3d}".format(d) for d in mlp.classes_]),"<-- PREDICTED LABEL")
-    print(confusion_matrix(y,y_pred,labels=mlp.classes_))
+    #y_pred = mlp.predict(X)
+    #print('Correctly predicted on TRAINING set with MLP classifier: {}, errors: {}'.format(sum(y==y_pred), sum(y!=y_pred)))
+    #print(classification_report(y, y_pred))
+    #print('Accuracy on TRAINING set with MLP classifier: {:.2f}'.format(accuracy_score(y, y_pred)))
+    #print("Confusion Matrix:\n "," ".join(["{:3d}".format(d) for d in mlp.classes_]),"<-- PREDICTED LABEL")
+    #print(confusion_matrix(y,y_pred,labels=mlp.classes_))
     
     # TEST data
-    y_pred = mlp.predict(Xt)
-    print('Correctly predicted on TEST set: {}, errors: {}'.format(sum(yt==y_pred), sum(yt!=y_pred)))
-    print(classification_report(yt, y_pred))
-    print('Accuracy on TEST set: {:.2f}'.format(accuracy_score(yt, y_pred)))
-    print("Confusion Matrix:\n "," ".join(["{:3d}".format(d) for d in mlp.classes_]),"<-- PREDICTED LABEL")
-    print(confusion_matrix(yt,y_pred,labels=mlp.classes_), "\n")
+    #y_pred = mlp.predict(Xt)
+    #print('Correctly predicted on TEST set: {}, errors: {}'.format(sum(yt==y_pred), sum(yt!=y_pred)))
+    #print(classification_report(yt, y_pred))
+    #print('Accuracy on TEST set: {:.2f}'.format(accuracy_score(yt, y_pred)))
+    #print("Confusion Matrix:\n "," ".join(["{:3d}".format(d) for d in mlp.classes_]),"<-- PREDICTED LABEL")
+    #print(confusion_matrix(yt,y_pred,labels=mlp.classes_), "\n")
 
     #
     # QUESTION 5
     #
-
-    parameters = {'hidden_layer_sizes': np.arrange()}
+    
+    n1 = np.arange(1,11,1)
+    n2 = np.arange(1,6,1)
+    
+    parameters = {
+                'hidden_layer_sizes': [(1,1), (1,2), (1,3), (1,4), (1, 5), (2, 1), (2, 2), (2, 3), (2, 4), (2,5),(3,1),(3,2),(3,3),(3,4),(3,5),(4,1),(4,2),(4,3),(4,4),(4,5),(5,1),(5,2),(5,3),(5,4),(5,5),(6,1),(6,2),(6,3),(6,4),(6,5),(7,1),(7,2),(7,3),(7,4),(7,5),(8,1),(8,2),(8,3),(8,4),(8,5),(9,1),(9,2),(9,3),(9,4),(9,5),(10,1),(10,2),(10,3),(10,4),(10,5)],
+                'max_iter': [5000]
+                }
+    
+    opt_mlp = GridSearchCV(MLPClassifier(), parameters)
+    opt_mlp.fit(X, y)
+    print("Best params for layers set")
+    print()
+    print(opt_mlp.best_params_)
+    print()
+    y_pred = opt_mlp.predict(X)
+    print('Accuracy on TRAINING set: {:.2f}'.format(accuracy_score(y,y_pred)))
     
 
     #
