@@ -92,7 +92,7 @@ def do_agent(agent):
     #
     # QUESTION 2
     #
-    clf = tree.DecisionTreeClassifier()
+    clf = tree.DecisionTreeClassifier(max_depth=5, min_samples_leaf=5)
     clf.fit(X, y) # training data
 
     #
@@ -102,6 +102,7 @@ def do_agent(agent):
     # 110171506
 
     # TRAINING data
+    print("*" * 40, "DECISION TREE CLASSIFIER", "*" * 40)
     y_pred = clf.predict(X)
     print('Correctly predicted on TRAINING set: {}, errors: {}'.format(sum(y==y_pred), sum(y!=y_pred)))
     print(classification_report(y, y_pred))
@@ -124,10 +125,11 @@ def do_agent(agent):
     #
 
     # Multi-Layer-Perceptron
-    mlp = MLPClassifier(max_iter=5000)
+    mlp = MLPClassifier(max_iter=5000, hidden_layer_sizes=(8,5))
     mlp.fit(X, y)
     
     # TRAINING data
+    print("*" * 40, "Multi-Layer Perceptron CLASSIFIER", "*" * 40)
     y_pred = mlp.predict(X)
     print('Correctly predicted on TRAINING set with MLP classifier: {}, errors: {}'.format(sum(y==y_pred), sum(y!=y_pred)))
     print(classification_report(y, y_pred))

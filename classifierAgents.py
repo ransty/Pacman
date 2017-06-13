@@ -1,6 +1,8 @@
 import samples
 import util
 from game import Agent, Directions
+from sklearn import tree
+
 
 
 class ClassifierAgent(Agent):
@@ -16,8 +18,9 @@ class ClassifierAgent(Agent):
         'actions', which maps to a list of actions corresponding to the list of game states.
         Store the resulting classifier in self.classifier
         """
-        "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        print(training_data)
+        classifier = tree.DecisionTreeClassifier(max_depth=5, min_samples_leaf=5)
+
 
     def getAction(self, state):
         """
