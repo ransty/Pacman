@@ -38,10 +38,8 @@ class ClassifierAgent(Agent):
         
         The returned action must be one of state.getLegalActions().
         """
-        legal = state.getLegalActions()
-        pred = self.classifier.predict(self.X)
-
-        return Directions.STOP
+        legalAction = self.classifier.predict(self.X)[0]
+        return legalAction
 #
 # functions for loading data sets
 #
