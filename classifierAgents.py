@@ -23,6 +23,8 @@ class ClassifierAgent(Agent):
         Store the resulting classifier in self.classifier
         """
         X, y, legal, Xt, yt, legalt, enc_vec, enc_lab = prepare_dataset(training_data, assignment2.extract_action_features)
+
+        self.X = X
         self.classifier = tree.DecisionTreeClassifier(max_depth=5, min_samples_leaf=5)
         self.classifier.fit(X, y)
 
@@ -36,10 +38,11 @@ class ClassifierAgent(Agent):
         
         The returned action must be one of state.getLegalActions().
         """
-        actions = state.getLegalActions()
-        return actions[1]
+        legal = state.getLegalActions()
+        pred = self.classifier.predict(self.X)
 
-    #
+        return Directions.STOP
+#
 # functions for loading data sets
 #
 
