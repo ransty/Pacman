@@ -8,6 +8,7 @@ from sklearn.feature_extraction import DictVectorizer
 from sklearn.preprocessing import LabelEncoder
 from game import Actions
 import pickle
+from sklearn.metrics import classification_report, accuracy_score
 
 class ClassifierAgent(Agent):
     def __init__(self, training_set=None):
@@ -23,8 +24,6 @@ class ClassifierAgent(Agent):
         Store the resulting classifier in self.classifier
         """
         X, y, legal, Xt, yt, legalt, enc_vec, enc_lab = prepare_dataset(training_data, assignment2.extract_action_features)
-
-        self.X = X
         self.classifier = tree.DecisionTreeClassifier(max_depth=5, min_samples_leaf=5)
         self.classifier.fit(X, y)
 
@@ -38,10 +37,18 @@ class ClassifierAgent(Agent):
         
         The returned action must be one of state.getLegalActions().
         """
-        legalAction = self.classifier.predict(self.X)[0]
-        return legalAction
+        # Legal moves
+        legalMoves = state.getLegalActions()
+        # Next we need to use the classifier to predict based on the state
+        # Step 1. Convert gameState to something the classifier can understand
+        vectorizer = DictVectorizer()
+        features = extract_features(state, assignment2.extract_action_features)
+        Xt = vectorizer.fit_transform(features)
+        # Step 2. Choose the next move based on the classifiers prediction
+        pred = self.classifier.predict_proba(Xt) # Crashes when either a ghost or Pacman is one square away from start
+        return Directions.STOP
 #
-# functions for loading data sets
+# functions for loading data sets (Taken from samples.py, changed to be used in classifierAgents.py)
 #
 
 def read_dataset(path):
