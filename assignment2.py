@@ -114,7 +114,7 @@ def do_agent(agent):
     #
 
     # Multi-Layer-Perceptron
-    mlp = MLPClassifier(max_iter=5000, hidden_layer_sizes=(8,5))
+    mlp = MLPClassifier(max_iter=5000)
     mlp.fit(X, y)
     
     # TRAINING data
