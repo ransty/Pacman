@@ -61,7 +61,7 @@ def extract_action_features(gameState, action):
     if distance is not None:
         features["nearest-food"] = float(distance) / (walls.width * walls.height)
     
-    closest = 999999
+    closest = 99999
     index = 0
     count = 0
     currentTemp = 0
@@ -70,14 +70,14 @@ def extract_action_features(gameState, action):
         count += 1
         currentTemp = util.manhattanDistance( ghost, gameState.getPacmanPosition() )
 
-    features['FoodLeft'] = successorState.getNumFood()
+    features['food-left'] = successorState.getNumFood()
             
     temp = util.manhattanDistance(successorState.getGhostPosition(count), successorState.getPacmanPosition() )
     
     if temp > currentTemp:
-        features['Moved away from Closest ghost'] = True
+        features['Moved-away-from-closest-ghost'] = True
     else:
-        features['Moved away from Closest ghost'] = False
+        features['Moved-away-from-closest-ghost'] = False
         
     features['Distance-to-closest-ghost'] = temp
     return features

@@ -45,8 +45,8 @@ class ClassifierAgent(Agent):
         features = extract_features(state, assignment2.extract_action_features)
         Xt = vectorizer.fit_transform(features)
         # Step 2. Choose the next move based on the classifiers prediction
-        pred = self.classifier.predict(Xt) # Crashes when either a ghost or Pacman is one square away from start
-        print(pred)
+        pred = self.classifier.predict(Xt)
+        # print(pred) # Debugging purposes
         if (pred == 1):
             direct = "North"
         elif (pred == 2):
