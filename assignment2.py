@@ -43,7 +43,7 @@ def extract_action_features(gameState, action):
 
     All values must be of primitive type (boolean, int, float) that scikit-learn can handle.
     """
-    features = dict()
+    features = util.Counter()
     successorState = gameState.generateSuccessor(0, action)
     features['score'] = successorState.getScore()  # keep this?
 
@@ -51,23 +51,42 @@ def extract_action_features(gameState, action):
     walls = gameState.getWalls()
     ghosts = gameState.getGhostPositions()
 
-    features = util.Counter()
-
-    features["bias"] = 1.0
-
     x, y = gameState.getPacmanPosition()
     dx, dy = Actions.directionToVector(action)
     next_x, next_y = int(x + dx), int(y + dy)
 
     features["#-of-ghosts-1-step-away"] = sum((next_x, next_y) in Actions.getLegalNeighbors(g, walls) for g in ghosts)
 
-    if not features["#-of-ghosts-1-step-away"] and food[next_x][next_y]:
-        features["food"] = 1.0
-
     distance = nearestFood((next_x, next_y), food, walls)
     if distance is not None:
         features["nearest-food"] = float(distance) / (walls.width * walls.height)
-    features.divideAll(10.0)
+    
+    CurrentGhostList = gameState.getGhostPositions()
+    
+    CurrentClosest = 999999
+    index = 0
+    count = 0
+    currentTemp = 0
+
+    for ghost in CurrentGhostList:
+        count += 1
+        currentTemp = util.manhattanDistance( ghost, gameState.getPacmanPosition() )
+        
+        if currentTemp < CurrentClosest:
+             CurrentClosest = currentTemp
+             CurrentGhost = ghost
+             index = count
+
+    features['FoodLeft'] = successorState.getNumFood()
+            
+    temp = util.manhattanDistance(successorState.getGhostPosition(count), successorState.getPacmanPosition() )
+    
+    if temp > currentTemp:
+        features['Moved away from Closest ghost'] = True
+    else:
+        features['Moved away from Closest ghost'] = False
+        
+    features['Distance-to-closest-ghost'] = temp
     return features
 
 
@@ -136,23 +155,22 @@ def do_agent(agent):
 
     #
     # QUESTION 5
-    #
-    
+    #  
     parameters = {
-                 'hidden_layer_sizes': list(product([1,2,3,4,5,7,8,9,10],[1,2,3,4,5])),
-                 'max_iter': [5000]
-         }
-      
+                  'hidden_layer_sizes': list(product([1,2,3,4,5,7,8,9,10],[1,2,3,4,5])),
+                  'max_iter': [5000]
+          }
+       
     opt_mlp = GridSearchCV(MLPClassifier(), parameters, n_jobs=8)
     opt_mlp.fit(X, y)
-      
+       
     print("Best params for layers set")
     print()
     print(opt_mlp.best_params_)
     print()
     y_pred = opt_mlp.predict(Xt)
     print('Accuracy on TRAINING set: {:.2f}'.format(accuracy_score(yt,y_pred)))
-    
+     
 
     #
     # QUESTION 6: see file classifierAgents.py
