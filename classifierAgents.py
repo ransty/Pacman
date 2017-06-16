@@ -48,13 +48,23 @@ class ClassifierAgent(Agent):
         pred = self.classifier.predict(Xt) # Crashes when either a ghost or Pacman is one square away from start
         print(pred)
         if (pred == 1):
-            return Directions.NORTH
+            direct = "North"
         elif (pred == 2):
-            return Directions.SOUTH
+            direct = "South"
         elif (pred == 0):
-            return Directions.EAST
+            direct = "East"
         elif (pred == 4):
-            return Directions.WEST
+            direct = "West"
+        
+        if direct in legalMoves:
+            if (direct == "North"):
+                return Directions.NORTH
+            if (direct == "South"):
+                return Directions.SOUTH
+            if (direct == "East"):
+                return Directions.EAST 
+            if (direct == "West"):
+                return Directions.WEST
         return Directions.STOP
 #
 # functions for loading data sets (Taken from samples.py, changed to be used in classifierAgents.py)
